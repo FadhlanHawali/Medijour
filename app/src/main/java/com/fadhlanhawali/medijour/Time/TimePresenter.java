@@ -1,8 +1,13 @@
 package com.fadhlanhawali.medijour.Time;
 
+import android.app.AlarmManager;
 import android.content.Context;
 
+import com.fadhlanhawali.medijour.Time.Model.TimeModel;
+
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TimePresenter implements TimeContract.Presenter {
 
@@ -21,6 +26,16 @@ public class TimePresenter implements TimeContract.Presenter {
 
     @Override
     public void getLastMedication() {
+        List<TimeModel> timeModelList = new ArrayList<>();
+        for (int i = 0;i<20;i++){
+            TimeModel timeModel = new TimeModel(
+                    System.currentTimeMillis(),
+                    true
+            );
 
+            timeModelList.add(timeModel);
+        }
+
+        mView.onGetLastMedication(timeModelList);
     }
 }
