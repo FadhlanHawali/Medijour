@@ -15,4 +15,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextFormInput">
+        <item name="android:background">@drawable/edittext_gradasi</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:textColor">#517B87</item>
+        <item name="android:textColorHint">#517B87</item>
+        <item name="android:padding">14dp</item>
+    </style>
+
 </resources>

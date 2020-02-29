@@ -29,7 +29,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/sfpro_light"
-            android:text="Masuk sebagai :"
+            android:text="Tambah Pengguna :"
             android:textSize="24sp"
             android:textColor="#517B87"
             android:textAlignment="center"/>
@@ -44,30 +44,34 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_below="@+id/form"
-        android:id="@+id/tvSignUp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/sfpro_light"
-        android:text="Belum punya akun? Daftar sekarang !"
-        android:textColor="#517B87"
-        android:textAlignment="center"/>
-
-    <Button
-        android:id="@+id/login"
-        style="?android:textAppearanceSmall"
-        android:background="@drawable/main_theme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_gravity="bottom"
-        android:text="Login"
-        android:textColor="#fff"
-        android:textStyle="bold" />
+        android:layout_gravity="bottom">
+        <Button
+            android:id="@+id/btCancel"
+            android:background="#606060"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Batal"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btSimpan"
+            android:background="@drawable/main_theme"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <ProgressBar
         android:id="@+id/pbHeaderProgress"
         android:layout_width="wrap_content"

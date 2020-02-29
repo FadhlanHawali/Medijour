@@ -4,28 +4,26 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fadhlanhawali.medijour.Home.HomeAdapter;
 import com.fadhlanhawali.medijour.R;
+import com.fadhlanhawali.medijour.Time.Alarm.AlarmFragment;
 import com.fadhlanhawali.medijour.Time.Model.TimeModel;
+import com.fadhlanhawali.medijour.Time.Riwayat.RiwayatFragment;
+import com.fadhlanhawali.medijour.Time.Riwayat.RiwayatAdapter;
 
-import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -34,8 +32,9 @@ public class TimeFragment extends Fragment implements TimeContract.View{
 
     private TimeContract.Presenter mPresenter;
     private TextView tvTimeMedication;
-    private TimeAdapter timeAdapter;
+
     private RecyclerView recyclerView;
+    private Button btRiwayat, btDaftarAlarm;
     Date date;
 
     AlarmManager alarmManager;
@@ -57,9 +56,33 @@ public class TimeFragment extends Fragment implements TimeContract.View{
 
             }
         });
+        loadFragment(new RiwayatFragment());
+        btDaftarAlarm = root.findViewById(R.id.btDaftarAlarm);
+        btRiwayat = root.findViewById(R.id.btRiwayat);
 
-        alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        btRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setBackgroundResource(R.drawable.button_pressed_left);
+                Fragment fragment = new RiwayatFragment();
+                loadFragment(fragment);
+                view.setBackgroundResource(R.drawable.button_pressed_left);
+                btDaftarAlarm.setBackgroundResource(R.drawable.button_unpressed_right);
+            }
+        });
 
+        btDaftarAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new AlarmFragment();
+                loadFragment(fragment);
+                if (view.getId() == R.id.btDaftarAlarm) {// toggle the boolean flag
+                    view.setBackgroundResource(R.drawable.button_pressed_right);
+                    btRiwayat.setBackgroundResource(R.drawable.button_unpressed_left);
+
+                }
+            }
+        });
 
         mPresenter.initP();
         return root;
@@ -72,17 +95,7 @@ public class TimeFragment extends Fragment implements TimeContract.View{
 
     @Override
     public void initV() {
-        timeAdapter = new TimeAdapter(getContext());
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(timeAdapter);
-        mPresenter.getLastMedication();
-    }
 
-    @Override
-    public void onGetLastMedication(List<TimeModel> timeModelList) {
-        timeAdapter.setTimeModelList(timeModelList);
     }
 
     private void showDatePicker() {
@@ -139,4 +152,16 @@ public class TimeFragment extends Fragment implements TimeContract.View{
         }
     };
 
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.flTime, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,17 +1,21 @@
-package com.fadhlanhawali.medijour.Time;
+package com.fadhlanhawali.medijour.Time.Riwayat;
 
-import com.fadhlanhawali.medijour.Time.Model.AlarmModel;
 import com.fadhlanhawali.medijour.Time.Model.TimeModel;
 
 import java.util.List;
 
-public interface TimeContract {
+public interface RiwayatContract {
+
     interface View{
         void initV();
+
+        void onGetLastMedication(List<TimeModel> timeModelList);
     }
 
     interface Presenter{
         void initP();
 
+        void getLastMedication();
     }
+
 }

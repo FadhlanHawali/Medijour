@@ -42,26 +42,43 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/round_linear_time">
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:text="Last Medication :"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:letterSpacing="-0.01"
-            android:lineSpacingExtra="5sp"
-            android:fontFamily="@font/sfpro_light"
-            android:textSize="26sp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/adapter_time"
-            tools:itemCount="5"/>
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btRiwayat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Riwayat"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:fontFamily="@font/sfpro_light"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btDaftarAlarm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Daftar Alarm"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:fontFamily="@font/sfpro_light"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/flTime"
+            android:layout_marginBottom="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
     </LinearLayout>
 
 </LinearLayout>

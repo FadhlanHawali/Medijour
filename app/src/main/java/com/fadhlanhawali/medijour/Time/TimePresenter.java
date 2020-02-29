@@ -23,19 +23,4 @@ public class TimePresenter implements TimeContract.Presenter {
     public void initP() {
         mView.initV();
     }
-
-    @Override
-    public void getLastMedication() {
-        List<TimeModel> timeModelList = new ArrayList<>();
-        for (int i = 0;i<20;i++){
-            TimeModel timeModel = new TimeModel(
-                    System.currentTimeMillis(),
-                    true
-            );
-
-            timeModelList.add(timeModel);
-        }
-
-        mView.onGetLastMedication(timeModelList);
-    }
 }

@@ -1,4 +1,4 @@
-package com.fadhlanhawali.medijour.Time;
+package com.fadhlanhawali.medijour.Time.Riwayat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,13 +10,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fadhlanhawali.medijour.ConvertDate;
-import com.fadhlanhawali.medijour.Home.Model.HomeModel;
 import com.fadhlanhawali.medijour.R;
 import com.fadhlanhawali.medijour.Time.Model.TimeModel;
 
 import java.util.List;
 
-public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.MyViewHolder> {
+public class RiwayatAdapter extends RecyclerView.Adapter<RiwayatAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<TimeModel> timeModelList;
@@ -34,7 +33,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.MyViewHolder> 
 
     }
 
-    public TimeAdapter(Context mContext) {
+    public RiwayatAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
@@ -45,15 +44,15 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.MyViewHolder> 
 
 
     @Override
-    public TimeAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RiwayatAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_time, parent, false);
 
-        return new TimeAdapter.MyViewHolder(itemView);
+        return new RiwayatAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final TimeAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final RiwayatAdapter.MyViewHolder holder, final int position) {
         ConvertDate convertDate = new ConvertDate();
         tvDateMedication.setText(convertDate.convertComplete(timeModelList.get(position).getMedicationTime()));
         tvTimeMedication.setText(convertDate.convertTime(timeModelList.get(position).getMedicationTime()));
